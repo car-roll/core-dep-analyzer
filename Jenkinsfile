@@ -8,7 +8,7 @@ pipeline {
         }
         stage('parse dependencies') {
             steps {
-                // sh 'mvn dependency:tree > dependencyTree.txt'
+                sh 'mvn dependency:tree > dependencyTree.txt'
                 script {
                     def dependencies = readFile 'dependencyTree.txt'
                     writeFile file: 'dep.csv', text: parseDependencies(dependencies)
